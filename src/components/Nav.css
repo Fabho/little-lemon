@@ -1,0 +1,9 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+ul.menu li {
+    display: inline;
+}
