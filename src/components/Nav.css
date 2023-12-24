@@ -1,9 +1,46 @@
-nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.nav {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
-ul.menu li {
-    display: inline;
+.header-logo {
+  grid-column: 1;
+  line-height: 0;
+  align-self: center;
+  justify-self: start;
+}
+
+.links {
+  grid-column: 3;
+  display: flex;
+  justify-content: right;
+  list-style-type: none;
+  transition: left 0.5s;
+}
+
+.links.expanded {
+  left: 0;
+}
+
+.links li {
+  display: flex;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  transition: background-color 0.5s;
+  color: #333333;
+  font-weight: bold;
+}
+
+.selected,
+.links a:hover,
+.links a:focus {
+  background-color: #F4CE14;
 }

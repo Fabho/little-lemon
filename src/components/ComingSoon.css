@@ -1,0 +1,9 @@
+.coming-soon-container {
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .coming-soon-container h1 {
+    text-align: center;
+  }

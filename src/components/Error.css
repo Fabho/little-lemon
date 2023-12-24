@@ -1,0 +1,9 @@
+.error-container {
+  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-container h1 {
+  text-align: center;
+}

@@ -1,17 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import App from "./App";
-import BookingPage from "./BookingPage";
+import Layout from "./Layout";
+import Home from "../views/Home";
+import Bookings from "../views/Bookings";
+import ComingSoon from "./ComingSoon";
+import Error from "./Error";
 
 const AppRouter = () => {
   return (
-    <div>
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<ComingSoon />} />
+          <Route path="/menu" element={<ComingSoon />} />
+          <Route path="/order" element={<ComingSoon />} />
+          <Route path="/login" element={<ComingSoon />} />
+          <Route path="/booking" element={<Bookings />} />
+          <Route path="*" element={<Error />} />
         </Routes>
-      </Router>
-    </div>
+      </Layout>
+    </Router>
   );
 };
 
