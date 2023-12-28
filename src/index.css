@@ -9,7 +9,6 @@ body {
   font-family: Karla, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495E57;
 }
 
 a {
@@ -45,4 +44,13 @@ main > section {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.rounded-button {
+  background-color: #F4CE14;
+  color: #000000;
+  font-weight: bold;
+  border: 1px solid #F4CE14;
+  border-radius: 16px;
+  padding:  0.75rem 1.5rem;
 }

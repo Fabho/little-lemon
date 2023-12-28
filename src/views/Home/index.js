@@ -1,14 +1,11 @@
+import Hero from "./Hero";
+import Specials from "./Specials";
+
 const Home = () => {
   return (
     <>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
-      <p>Home Page</p>
+      <Hero />
+      <Specials />
     </>
   );
 };
