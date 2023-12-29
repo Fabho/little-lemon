@@ -15,7 +15,7 @@ const Specials = () => {
       </div>
       {foodSpecials.map((food, i) => {
         return (
-          <div className="food-card">
+          <div className="food-card" key={i}>
             <div>
               <img src={food.cardImage} alt={food.title} />
               <div className="food-title">
