@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import moment from "moment";
 import BookingForm from "./BookingForm";
 
 describe("Booking tests", () => {
@@ -31,5 +32,26 @@ describe("Booking tests", () => {
 
     expect(occasionField).toBeInTheDocument();
     expect(occasionField).toHaveAttribute("id", "occasion");
+  });
+
+  test("Should send default form values", () => {
+    render(
+      <BookingForm
+        availableTimes={availableTimes}
+        dispatch={dispatch}
+        submitData={submitData}
+      />
+    );
+
+    const reservationButton = screen.getByRole("button");
+    fireEvent.click(reservationButton);
+
+    expect(reservationButton).toBeInTheDocument();
+    expect(submitData).toHaveBeenCalledWith({
+      date: moment().format("YYYY-MM-DD"),
+      time: availableTimes[0],
+      guests: 1,
+      eventType: "Birthday",
+    });
   });
 });

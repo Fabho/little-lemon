@@ -9,10 +9,19 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
   const [guests, setGuests] = useState(1);
   const [eventType, setEventType] = useState(events[0]);
 
+  // Error state
+  const [errorDate, setErrorDate] = useState(false);
+  const [errorGuests, setErrorGuests] = useState(false);
+
   const changeDate = (e) => {
     e.preventDefault();
     setDate(e.target.value);
     dispatch(e.target.value);
+
+    const today = moment().format("YYYY-MM-DD");
+    const userSelection = moment(e.target.value).format("YYYY-MM-DD");
+
+    userSelection < today ? setErrorDate(true) : setErrorDate(false);
   };
 
   const changeTime = (e) => {
@@ -23,6 +32,12 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
   const changeGuests = (e) => {
     e.preventDefault();
     setGuests(e.target.value);
+
+    const val = parseInt(e.target.value);
+
+    typeof val === "number" && val > 0 && val <= 10
+      ? setErrorGuests(false)
+      : setErrorGuests(true);
   };
 
   const changeEventType = (e) => {
@@ -32,6 +47,9 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
 
   const sendReservation = (e) => {
     e.preventDefault();
+
+    if (errorDate || errorGuests || availableTimes.length <= 0) return;
+
     submitData({ date, time, guests, eventType });
   };
 
@@ -46,6 +64,7 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
           required={true}
           onChange={changeDate}
         />
+        {errorDate ? <span id="error-date">Choose a valid date</span> : null}
         <label htmlFor="res-time">Choose time</label>
         <select
           id="res-time"
@@ -68,6 +87,11 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
           required={true}
           onChange={changeGuests}
         />
+        {errorGuests ? (
+          <span id="error-guests">
+            Guests must be greater than 0 and less or equal than 10
+          </span>
+        ) : null}
         <label htmlFor="occasion">Occasion</label>
         <select
           id="occasion"
@@ -79,7 +103,9 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
             <option key={ev}>{ev}</option>
           ))}
         </select>
-        <button onClick={sendReservation}>Make Your reservation</button>
+        <button aria-label="On Click" onClick={sendReservation}>
+          Make Your reservation
+        </button>
       </form>
     </>
   );
