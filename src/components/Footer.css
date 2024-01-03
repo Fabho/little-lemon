@@ -43,10 +43,6 @@
   list-style-type: none;
 }
 
-.nav li {
-  margin-bottom: 0.25rem;
-}
-
 .contact {
   grid-column: 3;
 }

@@ -1,5 +1,7 @@
-function Main({ children }) {
-  return <main>{children}</main>;
-}
+import "./Main.css";
+
+const Main = ({ children }) => {
+  return <main className="main-container">{children}</main>;
+};
 
 export default Main;

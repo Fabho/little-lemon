@@ -103,7 +103,11 @@ const BookingForm = ({ availableTimes, dispatch, submitData }) => {
             <option key={ev}>{ev}</option>
           ))}
         </select>
-        <button aria-label="On Click" onClick={sendReservation}>
+        <button
+          aria-label="On Click"
+          onClick={sendReservation}
+          className="rounded-button"
+        >
           Make Your reservation
         </button>
       </form>
